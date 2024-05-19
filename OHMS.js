@@ -45,8 +45,8 @@ const App = () => {
   };
 
   return (
-    <View style={{ flex: 1, padding: 20 }}>
-      <Text style={{ fontSize: 20, textAlign: 'center', marginVertical: 10 }}>OHMS</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>OHMS</Text>
       <FlatList
         data={passengers}
         ListHeaderComponent={renderHeader}
@@ -59,35 +59,50 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#e0e0e0', // Light gray background for the container
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    textAlign: 'center',
+    marginVertical: 20,
+    fontWeight: 'bold',
+  },
   row: {
     flexDirection: 'row',
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    paddingVertical: 10,
-    backgroundColor: '#f5f5f5', 
+    borderBottomColor: '#fff', // White border between rows
+    paddingVertical: 15,
+    backgroundColor: '#EAEAEA', // Light gray background for rows
+    paddingHorizontal: 10,
+  
+    borderRadius: 10, // Rounded corners
   },
   headerRow: {
-    backgroundColor: '#e6e6e6', 
+    backgroundColor: '#e6e6e6', // Light background for header
+    borderBottomColor: '#fff', // White border for header
+    borderBottomWidth: 0,
+
   },
   cell: {
     flex: 1,
     textAlign: 'center',
-    color: '#333', 
+    color: '#333', // Dark gray text for cells
   },
   headerCell: {
     fontWeight: 'bold',
-    backgroundColor: 'royalblue',
-    color: 'white', 
   },
   yellowRow: {
-    backgroundColor: '#fdfd96', 
+    backgroundColor: '#FAF19D', // Yellow background for specific row
   },
   redRow: {
-    backgroundColor: '#ff6961', 
+    backgroundColor: '#BD3B59', // Red background for specific row
   },
   boldText: {
     fontWeight: 'bold',
-  }
+  },
 });
 
 export default App;
