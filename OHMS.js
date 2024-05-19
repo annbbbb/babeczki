@@ -73,14 +73,14 @@ marginVertical: 20,
 fontWeight: 'bold',
 },
 table: {
-backgroundColor: '#EAEAEA', // White background for the table
+backgroundColor: '#EAEAEA', 
 borderRadius: 10, // Rounded corners
 padding: 10,
 },
 row: {
 flexDirection: 'row',
-borderBottomWidth: 1,
-borderBottomColor: '#EAEAEA', // Light gray border between rows
+borderBottomColor: '#FFF', 
+borderBottomWidth: 2,
 paddingVertical: 15,
 },
 headerRow: {
