@@ -3,29 +3,29 @@ import { View, Image, Text, StyleSheet, FlatList } from 'react-native';
 
 const App = () => {
   const [passengers, setPassengers] = useState([
-    { seat: '12A', name: 'John Smith', temp: '36.2 °C', pulse: '120 BPM', oxygen: '98%', bp: '120/70 mmHg' },
-    { seat: '19D', name: 'Jane Doe', temp: '36.7 °C', pulse: '101 BPM', oxygen: '95%', bp: '140/90 mmHg' },
+    { seat: '12A', pulse: '65 BPM', presure: '120/70 mm Hg',  oxygen: '98%', temp: '36,2 *C' },
+    { seat: '19D', pulse: '101 BPM', presure: '140/90 mm Hg', oxygen: '95%', temp: '36,7 *C' },
+    { seat: '33C', pulse: '76 BPM', presure: '120/90 mm Hg',  oxygen: '98%', temp: '35,7 *C' },
+    { seat: '39A', pulse: '127 BPM', presure: '172/90 mm Hg', oxygen: '98%', temp: '37,2 *C' }
   ]);
 
   const renderHeader = () => (
     <View style={styles.row}>
       <Text style={[styles.cell, styles.headerCell]}>Seat</Text>
-      <Text style={[styles.cell, styles.headerCell]}>Passenger</Text>
-      <Text style={[styles.cell, styles.headerCell]}>Temp</Text>
       <Text style={[styles.cell, styles.headerCell]}>Pulse</Text>
+      <Text style={[styles.cell, styles.headerCell]}>Presure</Text>
+      <Text style={[styles.cell, styles.headerCell]}>Temp</Text>
       <Text style={[styles.cell, styles.headerCell]}>Oxygen</Text>
-      <Text style={[styles.cell, styles.headerCell]}>BP</Text>
     </View>
   );
 
   const renderItem = ({ item }) => (
     <View style={styles.row}>
       <Text style={styles.cell}>{item.seat}</Text>
-      <Text style={styles.cell}>{item.name}</Text>
-      <Text style={styles.cell}>{item.temp}</Text>
       <Text style={styles.cell}>{item.pulse}</Text>
+      <Text style={styles.cell}>{item.presure}</Text>
+      <Text style={styles.cell}>{item.temp}</Text>
       <Text style={styles.cell}>{item.oxygen}</Text>
-      <Text style={styles.cell}>{item.bp}</Text>
     </View>
   );
 
