@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, Text, Table, TableView, Section } from 'react-native';
+import { View, Image, Text, StyleSheet, FlatList } from 'react-native';
 
 const App = () => {
   const [passengers, setPassengers] = useState([
@@ -7,43 +7,61 @@ const App = () => {
     { seat: '19D', name: 'Jane Doe', temp: '36.7 °C', pulse: '101 BPM', oxygen: '95%', bp: '140/90 mmHg' },
   ]);
 
-  return (
-    <View style={{ flex: 1 }}>
-      <Text style={{ fontSize: 20, textAlign: 'center', marginVertical: 10 }}>Passengers on flight</Text>
-      <View style={{ flexDirection: 'row' }}>
-        <Image source={{ uri: 'https://example.com/image.jpg' }} style={{ width: 150, height: 100, marginRight: 10 }} />
-        <TableView>
-          <Section>
-            <Table>
-              <Table.Row>
-                <Table.Cell textStyle={{ fontWeight: 'bold' }}>Seat</Table.Cell>
-                <Table.Cell textStyle={{ fontWeight: 'bold' }}>Passenger</Table.Cell>
-                <Table.Cell textStyle={{ fontWeight: 'bold' }}>Temp</Table.Cell>
-                <Table.Cell textStyle={{ fontWeight: 'bold' }}>Pulse</Table.Cell>
-                <Table.Cell textStyle={{ fontWeight: 'bold' }}>Oxygen</Table.Cell>
-                <Table.Cell textStyle={{ fontWeight: 'bold' }}>BP</Table.Cell>
-              </Table.Row>
-            </Table>
-          </Section>
+  const renderHeader = () => (
+    <View style={styles.row}>
+      <Text style={[styles.cell, styles.headerCell]}>Seat</Text>
+      <Text style={[styles.cell, styles.headerCell]}>Passenger</Text>
+      <Text style={[styles.cell, styles.headerCell]}>Temp</Text>
+      <Text style={[styles.cell, styles.headerCell]}>Pulse</Text>
+      <Text style={[styles.cell, styles.headerCell]}>Oxygen</Text>
+      <Text style={[styles.cell, styles.headerCell]}>BP</Text>
+    </View>
+  );
 
-          {passengers.map((passenger) => (
-            <Section key={passenger.seat}>
-              <Table>
-                <Table.Row>
-                  <Table.Cell>{passenger.seat}</Table.Cell>
-                  <Table.Cell>{passenger.name}</Table.Cell>
-                  <Table.Cell>{passenger.temp}</Table.Cell>
-                  <Table.Cell>{passenger.pulse}</Table.Cell>
-                  <Table.Cell>{passenger.oxygen}</Table.Cell>
-                  <Table.Cell>{passenger.bp}</Table.Cell>
-                </Table.Row>
-              </Table>
-            </Section>
-          ))}
-        </TableView>
+  const renderItem = ({ item }) => (
+    <View style={styles.row}>
+      <Text style={styles.cell}>{item.seat}</Text>
+      <Text style={styles.cell}>{item.name}</Text>
+      <Text style={styles.cell}>{item.temp}</Text>
+      <Text style={styles.cell}>{item.pulse}</Text>
+      <Text style={styles.cell}>{item.oxygen}</Text>
+      <Text style={styles.cell}>{item.bp}</Text>
+    </View>
+  );
+
+  return (
+    <View style={{ flex: 1, padding: 20 }}>
+      <Text style={{ fontSize: 20, textAlign: 'center', marginVertical: 10 }}>Passengers on flight</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Image source={{ uri: 'https://example.com/image.jpg' }} style={{ width: 150, height: 100, marginRight: 10 }} />
+        <FlatList
+          data={passengers}
+          ListHeaderComponent={renderHeader}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.seat}
+          style={{ flex: 1 }}
+        />
       </View>
+
+    
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    paddingVertical: 10,
+  },
+  cell: {
+    flex: 1,
+    textAlign: 'center',
+  },
+  headerCell: {
+    fontWeight: 'bold',
+  },
+});
 
 export default App;
