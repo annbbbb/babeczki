@@ -1,4 +1,3 @@
-```markdown
 # OHMS - Opaska na Rękę Monitorująca Stan
 
 ## Opis Aplikacji
@@ -39,4 +38,3 @@ OHMS to innowacyjna aplikacja, która zwiększa bezpieczeństwo pasażerów samo
 ---
 
 Dziękujemy za zainteresowanie naszą aplikacją. Jeśli masz pytania lub potrzebujesz dodatkowych informacji, prosimy o kontakt.
-```
